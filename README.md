@@ -1,0 +1,2 @@
+# fakerbots
+🤖 Bot master simulator
