@@ -1,7 +1,7 @@
 import { Button, Flex, Heading, Spacer, useDisclosure } from '@chakra-ui/react';
 import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
-import { Register } from './Register';
+import { Register } from '../../features/auth/components/Register';
 
 export const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();

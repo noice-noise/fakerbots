@@ -1,10 +1,10 @@
 import { ChakraProvider } from '@chakra-ui/react';
-import { Dashboard } from './pages/Dashboard';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Footer } from './components/Elements/Footer';
 import { Header } from './components/Elements/Header';
-import theme from './theme';
-
+import { Dashboard } from './pages/Dashboard';
 import AuthProvider from './providers/AuthProvider';
+import theme from './theme';
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Dashboard />} />
           </Routes>
+          <Footer />
         </AuthProvider>
       </ChakraProvider>
     </Router>

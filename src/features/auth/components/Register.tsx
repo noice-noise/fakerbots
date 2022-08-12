@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react';
 import { useContext } from 'react';
 import { useState } from 'react';
-import { AuthContext, AuthUser } from '../../providers/AuthProvider';
+import { AuthContext, AuthUser } from '../../../providers/AuthProvider';
 
 type RegisterProps = {
   isOpen: boolean;
@@ -38,7 +38,7 @@ export const Register = ({ isOpen, onClose }: RegisterProps) => {
         <DrawerOverlay />
 
         <DrawerContent>
-          <DrawerHeader borderBottomWidth='1px'>Register</DrawerHeader>
+          <DrawerHeader borderBottomWidth='1px'>Register User</DrawerHeader>
           <DrawerCloseButton />
           <DrawerBody>
             <Flex
@@ -50,7 +50,7 @@ export const Register = ({ isOpen, onClose }: RegisterProps) => {
               gap='3'
             >
               <Input
-                placeholder='name'
+                placeholder='Username'
                 name='name'
                 textAlign='center'
                 value={user.name}
@@ -61,7 +61,7 @@ export const Register = ({ isOpen, onClose }: RegisterProps) => {
                   }))
                 }
               />
-              <Button onClick={handleClick}>register</Button>
+              <Button onClick={handleClick}>Register</Button>
             </Flex>
           </DrawerBody>
         </DrawerContent>

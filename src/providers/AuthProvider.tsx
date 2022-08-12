@@ -23,14 +23,13 @@ type AuthProviderProps = {
 
 export default function AuthProvider({ children }: AuthProviderProps) {
   const guestUser = {
-    name: 'Guestx',
+    name: 'FakerBots',
     auth: false,
   };
 
   const [user, setUser] = useState<AuthUser>(guestUser);
 
   const register = (user: AuthUser) => {
-    console.log({ user });
     setUser((_) => user);
   };
 
