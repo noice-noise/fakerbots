@@ -27,7 +27,7 @@ export const generateRandomState = (): State => {
   const randomInitialState: State = {
     name: 'Ready',
     message: 'Ready',
-    task: generateRandomTask(0, 0, 1, Infinity),
+    task: generateRandomTask(1, 5, 1, 1000),
   };
   return randomInitialState;
 };
@@ -38,7 +38,7 @@ export const generateRandomStates = (): State[] => {
     {
       name: 'Ready',
       message: 'Ready',
-      task: generateRandomTask(0, 0, 1000, 1000),
+      task: generateRandomTask(1, 10, 1000, 1000),
     },
     {
       name: 'Initializing',
