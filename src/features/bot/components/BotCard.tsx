@@ -36,22 +36,20 @@ export const BotCard = ({ bot }: BotCardProps) => {
   }, [loop, botState]);
 
   const handleStateLoop = (bot: Bot): Bot => {
-    if (bot.currentState.task) {
-      if (
-        bot.currentState.task?.currentValue >=
-        bot.currentState.task?.targetValue
-      ) {
+    const currentState = bot.currentState;
+
+    if (currentState.task) {
+      if (currentState.task?.currentValue >= currentState.task.targetValue) {
         return handleNextState(bot);
       } else {
         return {
           ...bot,
           currentState: {
-            ...bot.currentState,
+            ...currentState,
             task: {
-              ...bot.currentState.task,
+              ...currentState.task,
               currentValue:
-                bot.currentState.task?.currentValue +
-                bot.currentState.task?.unitValue,
+                currentState.task.currentValue + currentState.task.unitValue,
             },
           },
         };
