@@ -26,14 +26,14 @@ export const BotCard = ({ bot }: BotCardProps) => {
   const [botState, setBotState] = useState<Bot>(bot);
 
   const MS_PER_LOOP = 1; // milliseconds per loop
-  const [time, setTime] = useState<string | null>(null);
+  const [loop, setLoop] = useState<number | null>(null);
 
   useEffect(() => {
     setTimeout(() => {
-      setTime(new Date().getMilliseconds().toString());
+      setLoop(new Date().getMilliseconds());
       setBotState((bot) => handleStateLoop(bot));
     }, MS_PER_LOOP);
-  }, [time]);
+  }, [loop, botState]);
 
   const handleStateLoop = (bot: Bot): Bot => {
     if (bot.currentState.task) {
