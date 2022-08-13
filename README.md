@@ -11,7 +11,7 @@ Bot simulator app to implement React-TypeScript fundamentals
 - [x] useState
 - [x] useContext
 - [x] useEffect
-- [ ] useReducer
+- [x] useReducer
 - [ ] ...
 
 ### TypeScript
