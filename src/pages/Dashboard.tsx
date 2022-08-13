@@ -7,7 +7,6 @@ export const Dashboard = () => {
       direction={'column'}
       gap={5}
       as={Center}
-      mt={10}
       h={'100vh'}
       w={'100vw'}
       overflowY={'hidden'}
