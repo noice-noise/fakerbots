@@ -97,7 +97,9 @@ export const BotCard = ({ bot }: BotCardProps) => {
       </Flex>
       <Divider />
       <Flex justify='space-between'>
-        <Text fontSize='xs'>{botState.currentState.message}</Text>
+        <Text opacity={0.75} fontSize='xs'>
+          {botState.currentState.message}
+        </Text>
         <Badge>{botState.currentState.name}</Badge>
       </Flex>
       <Box>
