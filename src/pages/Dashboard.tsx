@@ -7,15 +7,15 @@ export const Dashboard = () => {
       direction={'column'}
       gap={5}
       as={Center}
+      mt={10}
       h={'100vh'}
       w={'100vw'}
+      overflowY={'hidden'}
       inset={0}
+      justify='center'
+      align='center'
     >
       <BotList />
-      <ButtonGroup>
-        <Button>Add random</Button>
-        <Button>Run all</Button>
-      </ButtonGroup>
     </Flex>
   );
 };
