@@ -1,6 +1,5 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Footer } from './components/Elements/Footer';
 import { Header } from './components/Elements/Header';
 import { Dashboard } from './pages/Dashboard';
 import AuthProvider from './providers/AuthProvider';
@@ -15,7 +14,6 @@ function App() {
           <Routes>
             <Route path='/' element={<Dashboard />} />
           </Routes>
-          <Footer />
         </AuthProvider>
       </ChakraProvider>
     </Router>
