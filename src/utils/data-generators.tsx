@@ -23,22 +23,21 @@ export const generateRandomTask = (
   return randomizedTask;
 };
 
-export const generateRandomState = (): State => {
+export const generateRandomInitialState = (): State => {
   const randomInitialState: State = {
     name: 'Ready',
     message: 'Ready',
-    task: generateRandomTask(1, 5, 1, 1000),
+    task: generateRandomTask(0, 0, 1, 1),
   };
   return randomInitialState;
 };
 
 export const generateRandomStates = (): State[] => {
-  // TODO generate random state
   const generateRandomStates: State[] = [
     {
       name: 'Ready',
       message: 'Ready',
-      task: generateRandomTask(1, 10, 1000, 1000),
+      task: generateRandomTask(0, 0, 1, 1),
     },
     {
       name: 'Initializing',
