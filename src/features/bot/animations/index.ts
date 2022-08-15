@@ -92,27 +92,27 @@ export const buttonVariant: Variants = {
   hidden: {
     y: 1,
     transition: {
-      ease: 'easeInOut',
+      ease: 'backInOut',
     },
   },
   visible: {
     y: 10,
     transition: {
-      ease: 'easeInOut',
+      ease: 'backInOut',
       duration: 0.1,
     },
   },
   hover: {
     y: 0,
     transition: {
-      ease: 'easeInOut',
+      ease: 'backInOut',
       duration: 0.1,
     },
   },
   exit: {
     y: 10,
     transition: {
-      ease: 'easeInOut',
+      ease: 'backInOut',
     },
   },
 };
