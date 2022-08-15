@@ -1,9 +1,11 @@
 import { Box, Button, ButtonGroup, Flex } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 import { useReducer, useState } from 'react';
 import {
   generateRandomInitialState,
   generateRandomStates,
 } from '../../../utils/data-generators';
+import { parentVariants } from '../animations';
 import { Bot } from '../types';
 import { Action, BotCard } from './BotCard';
 
@@ -85,6 +87,41 @@ export const initialBots: Bot[] = [
     currentState: generateRandomInitialState(),
     states: generateRandomStates(),
   },
+  {
+    id: new Date().getTime(),
+    name: 'KilaBot',
+    currentStateIndex: 0,
+    currentState: generateRandomInitialState(),
+    states: generateRandomStates(),
+  },
+  {
+    id: new Date().getTime(),
+    name: 'KilaBot',
+    currentStateIndex: 0,
+    currentState: generateRandomInitialState(),
+    states: generateRandomStates(),
+  },
+  {
+    id: new Date().getTime(),
+    name: 'KilaBot',
+    currentStateIndex: 0,
+    currentState: generateRandomInitialState(),
+    states: generateRandomStates(),
+  },
+  {
+    id: new Date().getTime(),
+    name: 'KilaBot',
+    currentStateIndex: 0,
+    currentState: generateRandomInitialState(),
+    states: generateRandomStates(),
+  },
+  {
+    id: new Date().getTime(),
+    name: 'KilaBot',
+    currentStateIndex: 0,
+    currentState: generateRandomInitialState(),
+    states: generateRandomStates(),
+  },
 ];
 
 export const BotList = () => {
@@ -100,16 +137,21 @@ export const BotList = () => {
   return (
     <Flex
       direction='column'
-      justify='center'
+      justify='start'
       align='center'
       w='full'
       h='full'
       mx='auto'
     >
       <Flex
-        gap={3}
+        as={motion.div}
+        variants={parentVariants}
+        initial='hidden'
+        animate='visible'
+        exit='exit'
+        gap={5}
         flexWrap='wrap'
-        maxW='container.xl'
+        maxW='90vw'
         justify='center'
         align='center'
       >

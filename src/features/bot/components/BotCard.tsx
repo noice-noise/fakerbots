@@ -2,6 +2,7 @@ import {
   Badge,
   Box,
   Button,
+  ButtonGroup,
   Divider,
   Flex,
   Heading,
@@ -11,11 +12,17 @@ import {
   TagLabel,
   Text,
 } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 import { useEffect, useReducer, useState } from 'react';
 import {
   generateRandomInitialState,
   generateRandomStates,
 } from '../../../utils/data-generators';
+import {
+  buttonContainerVariant,
+  buttonVariant,
+  childrenVariants,
+} from '../animations';
 import { Bot } from '../types';
 import { BotListAction } from './BotList';
 
@@ -145,49 +152,65 @@ export const BotCard = ({ bot, onUpdate, action }: BotCardProps) => {
   };
 
   return (
-    <Flex
-      direction='column'
-      w={80}
-      p={4}
-      borderWidth={'1px'}
-      rounded={'lg'}
-      gap={2}
-    >
-      <Flex align='center'>
-        <Heading size='sm' fontWeight='bold'>
-          {state.name}
-        </Heading>
-        <Spacer />
-        <Tag size='sm'>
-          <TagLabel>Bot</TagLabel>
-        </Tag>
-      </Flex>
-      <Divider />
-      <Flex justify='space-between'>
-        <Text opacity={0.75} fontSize='xs'>
-          {state.currentState.message}
-        </Text>
-        <Badge>{state.currentState.name}</Badge>
-      </Flex>
-      <Box>
-        <Progress
-          colorScheme='green'
-          hasStripe
-          isAnimated
-          value={Number(state.currentState.task.currentValue)}
-          max={state.currentState.task.targetValue}
-          rounded='lg'
-          size='sm'
-        />
-        <Flex justify='space-between' mt={1}>
-          <Text fontSize='xs'>{state.currentState.task.currentValue}</Text>
-          <Text fontSize='xs'>{state.currentState.task.targetValue}</Text>
+    <Box as={motion.div} variants={childrenVariants}>
+      <Flex
+        as={motion.div}
+        variants={childrenVariants}
+        animate='visible'
+        whileHover='hover'
+        // whileTap='tap'
+        direction='column'
+        w={80}
+        p={4}
+        borderWidth={'1px'}
+        rounded={'lg'}
+        gap={2}
+      >
+        <Flex align='center'>
+          <Heading size='sm' fontWeight='bolclsd'>
+            {state.name}
+          </Heading>
+          <Spacer />
+          <Tag size='sm'>
+            <TagLabel>Bot</TagLabel>
+          </Tag>
         </Flex>
-      </Box>
+        <Divider />
+        <Flex justify='space-between'>
+          <Text opacity={0.75} fontSize='xs'>
+            {state.currentState.message}
+          </Text>
+          <Badge>{state.currentState.name}</Badge>
+        </Flex>
+        <Box>
+          <Progress
+            colorScheme='green'
+            hasStripe
+            isAnimated
+            value={Number(state.currentState.task.currentValue)}
+            max={state.currentState.task.targetValue}
+            rounded='lg'
+            size='sm'
+          />
+          <Flex justify='space-between' mt={1}>
+            <Text fontSize='xs'>{state.currentState.task.currentValue}</Text>
+            <Text fontSize='xs'>{state.currentState.task.targetValue}</Text>
+          </Flex>
+        </Box>
 
-      <Button variant={'outline'} size='sm' onClick={() => handleClick()}>
-        Override
-      </Button>
-    </Flex>
+        <ButtonGroup as={motion.div} variants={buttonContainerVariant}>
+          <Button
+            as={motion.button}
+            variants={buttonVariant}
+            whileHover='hover'
+            whileTap='tap'
+            size='sm'
+            onClick={() => handleClick()}
+          >
+            Override
+          </Button>
+        </ButtonGroup>
+      </Flex>
+    </Box>
   );
 };

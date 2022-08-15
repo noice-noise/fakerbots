@@ -7,12 +7,13 @@ export const Dashboard = () => {
       direction={'column'}
       gap={5}
       as={Center}
-      h={'100vh'}
+      mt={20}
+      mb={32}
+      minH={'100vh'}
       w={'100vw'}
-      overflowY={'hidden'}
       inset={0}
-      justify='center'
-      align='center'
+      justify='start'
+      align='start'
     >
       <BotList />
     </Flex>
