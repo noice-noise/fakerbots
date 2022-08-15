@@ -80,7 +80,7 @@ export const generateRandomStates = (): State[] => {
     {
       name: 'Analyzing',
       message: 'Analyzing target system...',
-      task: generateRandomTask(1, 10, 5000, 10000),
+      task: generateRandomTask(1, 10, 500, 2000),
     },
     {
       name: 'Formulating',
@@ -89,7 +89,7 @@ export const generateRandomStates = (): State[] => {
     },
     {
       name: 'Running',
-      message: 'Running strategy...',
+      message: 'Running...',
       task: generateRandomTask(1, 10, 10000, 20000),
     },
     {
@@ -100,6 +100,11 @@ export const generateRandomStates = (): State[] => {
     {
       name: 'Transferring',
       message: 'Transferring to accounts...',
+      task: generateRandomTask(1, 5, 1000, 1000),
+    },
+    {
+      name: 'Cleaning',
+      message: 'Cleaning up...',
       task: generateRandomTask(1, 5, 1000, 1000),
     },
   ];
