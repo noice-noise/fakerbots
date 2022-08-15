@@ -1,15 +1,13 @@
 import { Box, Button, ButtonGroup, Flex } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { useReducer, useState } from 'react';
-import {
-  generateRandomInitialState,
-  generateRandomStates,
-} from '../../../utils/data-generators';
+import { generateRandomBot } from '../../../utils/data-generators';
 import { parentVariants } from '../animations';
 import { Bot } from '../types';
 import { Action, BotCard } from './BotCard';
 
 export enum BotListAction {
+  ADD_BOT,
   BOT_UPDATED,
   RUN_ALL,
   HOLD_ALL,
@@ -18,6 +16,7 @@ export enum BotListAction {
 }
 
 export type BotListActionType =
+  | { type: BotListAction.ADD_BOT; payload: Bot }
   | { type: BotListAction.BOT_UPDATED; payload: Bot }
   | { type: BotListAction.OVERRIDE_ALL }
   | { type: BotListAction.RESET_ALL };
@@ -27,16 +26,23 @@ export const botListReducer = (
   action: BotListActionType
 ): Bot[] => {
   switch (action.type) {
+    case BotListAction.ADD_BOT:
+      return addBots(state, action.payload);
     case BotListAction.RESET_ALL:
-      return initialBots;
+      return resetBots(state);
     case BotListAction.BOT_UPDATED:
-      return updateBots(action.payload, state);
+      return updateBots(state, action.payload);
     default:
       throw new Error('Invalid action type');
   }
 };
 
-const updateBots = (bot: Bot, state: Bot[]): Bot[] => {
+const addBots = (state: Bot[], bot: Bot): Bot[] => {
+  const updatedBots = [...state, bot];
+  return updatedBots;
+};
+
+const updateBots = (state: Bot[], bot: Bot): Bot[] => {
   const updatedBots = state.map((currentBot) =>
     currentBot.id === bot.id ? bot : currentBot
   );
@@ -44,84 +50,20 @@ const updateBots = (bot: Bot, state: Bot[]): Bot[] => {
   return updatedBots;
 };
 
+const resetBots = (state: Bot[]): Bot[] => {
+  const resetBots = state.map((currentBot) => ({
+    ...currentBot,
+    currentStateIndex: 0,
+    currentState: currentBot.states[0],
+  }));
+
+  return resetBots;
+};
+
 export const initialBots: Bot[] = [
-  {
-    id: new Date().getTime(),
-    name: 'RowBot',
-    currentStateIndex: 0,
-    currentState: generateRandomInitialState(),
-    states: generateRandomStates(),
-  },
-  {
-    id: new Date().getTime(),
-    name: 'LowBot',
-    currentStateIndex: 0,
-    currentState: generateRandomInitialState(),
-    states: generateRandomStates(),
-  },
-  {
-    id: new Date().getTime(),
-    name: 'AmBot',
-    currentStateIndex: 0,
-    currentState: generateRandomInitialState(),
-    states: generateRandomStates(),
-  },
-  {
-    id: new Date().getTime(),
-    name: 'BeBot',
-    currentStateIndex: 0,
-    currentState: generateRandomInitialState(),
-    states: generateRandomStates(),
-  },
-  {
-    id: new Date().getTime(),
-    name: 'GinaBot',
-    currentStateIndex: 0,
-    currentState: generateRandomInitialState(),
-    states: generateRandomStates(),
-  },
-  {
-    id: new Date().getTime(),
-    name: 'KilaBot',
-    currentStateIndex: 0,
-    currentState: generateRandomInitialState(),
-    states: generateRandomStates(),
-  },
-  {
-    id: new Date().getTime(),
-    name: 'KilaBot',
-    currentStateIndex: 0,
-    currentState: generateRandomInitialState(),
-    states: generateRandomStates(),
-  },
-  {
-    id: new Date().getTime(),
-    name: 'KilaBot',
-    currentStateIndex: 0,
-    currentState: generateRandomInitialState(),
-    states: generateRandomStates(),
-  },
-  {
-    id: new Date().getTime(),
-    name: 'KilaBot',
-    currentStateIndex: 0,
-    currentState: generateRandomInitialState(),
-    states: generateRandomStates(),
-  },
-  {
-    id: new Date().getTime(),
-    name: 'KilaBot',
-    currentStateIndex: 0,
-    currentState: generateRandomInitialState(),
-    states: generateRandomStates(),
-  },
-  {
-    id: new Date().getTime(),
-    name: 'KilaBot',
-    currentStateIndex: 0,
-    currentState: generateRandomInitialState(),
-    states: generateRandomStates(),
-  },
+  generateRandomBot(),
+  generateRandomBot(),
+  generateRandomBot(),
 ];
 
 export const BotList = () => {
@@ -194,6 +136,17 @@ export const BotList = () => {
             }}
           >
             Override all
+          </Button>
+          <Button
+            minW={32}
+            px={5}
+            py={6}
+            onClick={() => {
+              const bot = generateRandomBot();
+              dispatch({ type: BotListAction.ADD_BOT, payload: bot });
+            }}
+          >
+            Upgrade Bot Collection
           </Button>
           <Button
             minW={32}

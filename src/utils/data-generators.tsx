@@ -1,4 +1,39 @@
-import { Task, State } from '../features/bot';
+import { Task, State, Bot } from '../features/bot';
+
+const defaultBotNames = [
+  'RowBot',
+  'LowBot',
+  'KilaBot',
+  'GinaBot',
+  'AmBot',
+  'BeBot',
+  'SagBot',
+];
+
+const getDefaultName = (): string => {
+  if (defaultBotNames.length <= 0) {
+    return 'Bot';
+  }
+
+  const min = 0;
+  const max = defaultBotNames.length - 1;
+
+  const randomIndex = generateRandomNumber(min, max);
+  const name = defaultBotNames[randomIndex];
+  defaultBotNames.splice(randomIndex, 1); // remove the name
+
+  return name;
+};
+
+export const generateRandomBot = (botName?: string): Bot => {
+  return {
+    id: new Date().getTime() + generateRandomNumber(0, 9999),
+    name: botName || getDefaultName(),
+    currentStateIndex: 0,
+    currentState: generateRandomInitialState(),
+    states: generateRandomStates(),
+  };
+};
 
 export const generateRandomTask = (
   minUnit: number,
@@ -8,10 +43,8 @@ export const generateRandomTask = (
   title: string = 'Running task',
   description: string = 'Executing...'
 ): Task => {
-  const randomUnitValue =
-    Math.floor(Math.random() * (maxUnit - minUnit + 1)) + minUnit;
-  const randomTargetValue =
-    Math.floor(Math.random() * (maxTarget - minTarget + 1)) + 100;
+  const randomUnitValue = generateRandomNumber(minUnit, maxUnit);
+  const randomTargetValue = generateRandomNumber(minTarget, maxTarget);
 
   const randomizedTask: Task = {
     title: title,
@@ -71,4 +104,8 @@ export const generateRandomStates = (): State[] => {
     },
   ];
   return generateRandomStates;
+};
+
+export const generateRandomNumber = (min: number, max: number): number => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 };
