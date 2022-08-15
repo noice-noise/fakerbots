@@ -25,7 +25,7 @@ import {
 } from '../animations';
 import { Bot } from '../types';
 import { BotListAction } from './BotList';
-import { TbArrowsRandom } from 'react-icons/tb';
+import { TbArrowsRandom, TbAtom2 } from 'react-icons/tb';
 
 enum BotAction {
   UPDATE_STATE,
@@ -202,14 +202,17 @@ export const BotCard = ({ bot, onUpdate, action }: BotCardProps) => {
           justifyContent='flex-end'
         >
           <Button
+            variant='outline'
             as={motion.button}
             variants={buttonVariant}
+            leftIcon={<TbAtom2 />}
             size='sm'
             onClick={() => dispatch({ type: BotAction.NEXT_STATE })}
           >
             Override
           </Button>
           <Button
+            variant='outline'
             as={motion.button}
             variants={buttonVariant}
             onClick={() => dispatch({ type: BotAction.RESET_STATE })}

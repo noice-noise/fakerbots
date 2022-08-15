@@ -1,6 +1,7 @@
-import { Box, Button, ButtonGroup, Flex } from '@chakra-ui/react';
+import { Box, Button, ButtonGroup, Flex, IconButton } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { useReducer, useState } from 'react';
+import { TbAtom2, TbRobot, TbRotateClockwise2 } from 'react-icons/tb';
 import { generateRandomBot } from '../../../utils/data-generators';
 import { parentVariants } from '../animations';
 import { Bot } from '../types';
@@ -91,7 +92,7 @@ export const BotList = () => {
         initial='hidden'
         animate='visible'
         exit='exit'
-        gap={5}
+        gap={4}
         flexWrap='wrap'
         maxW='90vw'
         justify='center'
@@ -123,42 +124,47 @@ export const BotList = () => {
           mx='auto'
           w='full'
           h={16}
-          px={5}
           align='center'
           justify='center'
+          gap={4}
         >
-          <Button
-            minW={32}
-            px={5}
-            py={6}
+          <IconButton
+            aria-label='Override'
+            icon={<TbAtom2 size={'md'} />}
+            rounded='full'
+            size='lg'
+            boxSize={14}
+            p={3}
             onClick={() => {
               setAction({ type: BotListAction.OVERRIDE_ALL });
             }}
-          >
-            Override all
-          </Button>
-          <Button
-            minW={32}
-            px={5}
-            py={6}
+          />
+
+          <IconButton
+            aria-label='Add Bot'
+            icon={<TbRobot size={'md'} />}
+            rounded='full'
+            size='lg'
+            boxSize={14}
+            p={3}
             onClick={() => {
               const bot = generateRandomBot();
               dispatch({ type: BotListAction.ADD_BOT, payload: bot });
             }}
-          >
-            Upgrade Bot Collection
-          </Button>
-          <Button
-            minW={32}
-            px={5}
-            py={6}
+          />
+
+          <IconButton
+            aria-label='Reset'
+            icon={<TbRotateClockwise2 size={'md'} />}
+            rounded='full'
+            size='lg'
+            boxSize={14}
+            p={3}
             onClick={() => {
               dispatch({ type: BotListAction.RESET_ALL });
               setAction({ type: BotListAction.RESET_ALL });
             }}
-          >
-            Reset all
-          </Button>
+          />
         </ButtonGroup>
       </Box>
     </Flex>

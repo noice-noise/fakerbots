@@ -2,12 +2,12 @@ import { Variants } from 'framer-motion';
 
 export const parentVariants: Variants = {
   hidden: {
-    x: '100vw',
-    opacity: 0,
+    y: '100vh',
+    // opacity: 0,
   },
   visible: {
-    x: 0,
-    opacity: 1,
+    y: 0,
+    // opacity: 1,
     transition: {
       type: 'spring',
       mass: 0.4,
@@ -26,7 +26,7 @@ export const parentVariants: Variants = {
 
 export const childrenVariants: Variants = {
   hidden: {
-    y: 50,
+    y: 0,
     opacity: 0,
     transition: {
       ease: 'easeInOut',
@@ -34,7 +34,7 @@ export const childrenVariants: Variants = {
     },
   },
   visible: {
-    y: 20,
+    y: 0,
     opacity: 1,
     transition: {
       type: 'spring',
@@ -44,12 +44,12 @@ export const childrenVariants: Variants = {
     },
   },
   hover: {
-    y: 0,
-    scale: 1.1,
+    y: -10,
+    scale: 1.025,
     transition: {
       type: 'spring',
       mass: 0.3,
-      damping: 7,
+      damping: 5,
       stiffness: 200,
     },
   },
@@ -66,7 +66,7 @@ export const buttonContainerVariant: Variants = {
       ease: 'easeInOut',
       duration: 0.125,
       staggerChildren: 0.125,
-      when: 'afterChildren',
+      when: 'beforeChildren',
     },
   },
   hover: {
