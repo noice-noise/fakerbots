@@ -28,18 +28,23 @@ export const childrenVariants: Variants = {
   hidden: {
     y: 50,
     opacity: 0,
+    transition: {
+      ease: 'easeInOut',
+      duration: 0.125,
+    },
   },
   visible: {
-    y: 0,
+    y: 20,
     opacity: 1,
     transition: {
       type: 'spring',
       mass: 0.3,
       damping: 8,
-      when: 'beforeChildren',
+      duration: 2,
     },
   },
   hover: {
+    y: 0,
     scale: 1.1,
     transition: {
       type: 'spring',
@@ -57,10 +62,25 @@ export const buttonContainerVariant: Variants = {
   visible: {
     opacity: 0,
     display: 'hidden',
+    transition: {
+      ease: 'easeInOut',
+      duration: 0.125,
+      staggerChildren: 0.125,
+      when: 'afterChildren',
+    },
   },
   hover: {
     opacity: 1,
     display: 'flex',
+    transition: {
+      ease: 'easeInOut',
+      duration: 0.1,
+      staggerChildren: 0.125,
+    },
+  },
+  exit: {
+    opacity: 0,
+    display: 'hidden',
     transition: {
       ease: 'easeInOut',
       duration: 0.1,
@@ -70,34 +90,29 @@ export const buttonContainerVariant: Variants = {
 
 export const buttonVariant: Variants = {
   hidden: {
-    opacity: 1,
-    y: 0,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
+    y: 1,
     transition: {
-      type: 'spring',
-      mass: 0.8,
-      damping: 2,
+      ease: 'easeInOut',
     },
   },
-  hover: {
-    opacity: 1,
-    y: 0,
-    scale: 1.1,
+  visible: {
+    y: 10,
     transition: {
       ease: 'easeInOut',
       duration: 0.1,
     },
   },
-  tap: {
-    scale: 0.9,
+  hover: {
+    y: 0,
     transition: {
-      type: 'spring',
-      mass: 0.3,
-      damping: 7,
-      stiffness: 200,
+      ease: 'easeInOut',
+      duration: 0.1,
+    },
+  },
+  exit: {
+    y: 10,
+    transition: {
+      ease: 'easeInOut',
     },
   },
 };

@@ -25,6 +25,7 @@ import {
 } from '../animations';
 import { Bot } from '../types';
 import { BotListAction } from './BotList';
+import { TbArrowsRandom } from 'react-icons/tb';
 
 enum BotAction {
   UPDATE_STATE,
@@ -147,19 +148,16 @@ export const BotCard = ({ bot, onUpdate, action }: BotCardProps) => {
     }
   };
 
-  const handleClick = () => {
-    dispatch({ type: BotAction.NEXT_STATE });
-  };
-
   return (
     <Box as={motion.div} variants={childrenVariants}>
       <Flex
         as={motion.div}
         variants={childrenVariants}
+        initial='hidden'
         animate='visible'
         whileHover='hover'
-        // whileTap='tap'
         direction='column'
+        exit='exit'
         w={80}
         p={4}
         borderWidth={'1px'}
@@ -198,16 +196,27 @@ export const BotCard = ({ bot, onUpdate, action }: BotCardProps) => {
           </Flex>
         </Box>
 
-        <ButtonGroup as={motion.div} variants={buttonContainerVariant}>
+        <ButtonGroup
+          as={motion.div}
+          variants={buttonContainerVariant}
+          justifyContent='flex-end'
+        >
           <Button
             as={motion.button}
             variants={buttonVariant}
-            whileHover='hover'
-            whileTap='tap'
             size='sm'
-            onClick={() => handleClick()}
+            onClick={() => dispatch({ type: BotAction.NEXT_STATE })}
           >
             Override
+          </Button>
+          <Button
+            as={motion.button}
+            variants={buttonVariant}
+            onClick={() => dispatch({ type: BotAction.RESET_STATE })}
+            leftIcon={<TbArrowsRandom />}
+            size='sm'
+          >
+            Reset
           </Button>
         </ButtonGroup>
       </Flex>
