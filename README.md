@@ -27,7 +27,7 @@ Bot simulator app to implement React-TypeScript fundamentals
 
 ### Animation
 
-- [ ] Framer Motion
+- [x] Framer Motion
 
 ### Project File Structure
 
