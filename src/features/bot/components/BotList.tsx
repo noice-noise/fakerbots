@@ -1,4 +1,11 @@
-import { Box, Button, ButtonGroup, Flex, IconButton } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Flex,
+  IconButton,
+  Tooltip,
+} from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { useReducer, useState } from 'react';
 import { TbAtom2, TbRobot, TbRotateClockwise2 } from 'react-icons/tb';
@@ -124,50 +131,71 @@ export const BotList = () => {
       >
         <ButtonGroup
           as={Flex}
-          mx='auto'
           w='full'
           h={16}
           align='center'
           justify='center'
-          gap={4}
+          isAttached
         >
-          <IconButton
-            aria-label='Override'
-            icon={<TbAtom2 size={'md'} />}
+          <Tooltip
             rounded='full'
-            size='lg'
-            boxSize={14}
-            p={3}
-            onClick={() => {
-              setAction({ type: BotListAction.OVERRIDE_ALL });
-            }}
-          />
-
-          <IconButton
-            aria-label='Add Bot'
-            icon={<TbRobot size={'md'} />}
+            px={3}
+            label='Override Bot States'
+            aria-label='Override Bot States'
+          >
+            <IconButton
+              aria-label='Override Bot States'
+              icon={<TbAtom2 size={'md'} />}
+              borderRadius='10rem'
+              rounded='full'
+              size='lg'
+              boxSize={14}
+              p={3}
+              onClick={() => {
+                setAction({ type: BotListAction.OVERRIDE_ALL });
+              }}
+            />
+          </Tooltip>
+          <Tooltip
             rounded='full'
-            size='lg'
-            boxSize={14}
-            p={3}
-            onClick={() => {
-              const bot = generateRandomBot();
-              dispatch({ type: BotListAction.ADD_BOT, payload: bot });
-            }}
-          />
-
-          <IconButton
-            aria-label='Reset'
-            icon={<TbRotateClockwise2 size={'md'} />}
+            label='Add Random Bot'
+            px={3}
+            aria-label='Add Random Bot'
+          >
+            <IconButton
+              aria-label='Add Random Bot'
+              icon={<TbRobot size={'md'} />}
+              borderRadius='10rem'
+              rounded='full'
+              size='lg'
+              boxSize={14}
+              p={3}
+              onClick={() => {
+                const bot = generateRandomBot();
+                dispatch({ type: BotListAction.ADD_BOT, payload: bot });
+              }}
+            />
+          </Tooltip>
+          <Tooltip
             rounded='full'
-            size='lg'
-            boxSize={14}
-            p={3}
-            onClick={() => {
-              dispatch({ type: BotListAction.RESET_ALL });
-              setAction({ type: BotListAction.RESET_ALL });
-            }}
-          />
+            label='Reset Bot States'
+            px={3}
+            aria-label='Reset Bot States'
+          >
+            <IconButton
+              aria-label='Reset Bot States'
+              icon={<TbRotateClockwise2 size={'md'} />}
+              borderRadius='10rem'
+              rounded='full'
+              size='lg'
+              boxSize={14}
+              p={3}
+              onClick={() => {
+                dispatch({ type: BotListAction.RESET_ALL });
+                setAction({ type: BotListAction.RESET_ALL });
+              }}
+            />
+          </Tooltip>
         </ButtonGroup>
       </Box>
     </Flex>
