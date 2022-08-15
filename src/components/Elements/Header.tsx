@@ -1,14 +1,15 @@
 import {
   Box,
-  Button,
   Flex,
   Heading,
+  IconButton,
   Spacer,
   useDisclosure,
 } from '@chakra-ui/react';
 import { useContext } from 'react';
-import { AuthContext } from '../../providers/AuthProvider';
+import { TbUserCircle } from 'react-icons/tb';
 import { Register } from '../../features/auth/components/Register';
+import { AuthContext } from '../../providers/AuthProvider';
 
 export const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -33,15 +34,18 @@ export const Header = () => {
           h={16}
           px={5}
         >
-          <Button onClick={onOpen} variant='ghost' px='0'>
-            👋
-          </Button>
+          <IconButton
+            aria-label='Edit User'
+            icon={<TbUserCircle size='sm' />}
+            boxSize={12}
+            rounded='full'
+            onClick={onOpen}
+            variant='ghost'
+            p={3}
+          />
           <Spacer />
           <Heading size='md'>{user.name}</Heading>
           <Spacer />
-          <Button variant='ghost' px='0'>
-            🛒
-          </Button>
         </Flex>
       </Box>
       <Register isOpen={isOpen} onClose={onClose} />
