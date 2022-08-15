@@ -65,6 +65,9 @@ export const initialBots: Bot[] = [
   generateRandomBot(),
   generateRandomBot(),
   generateRandomBot(),
+  generateRandomBot(),
+  generateRandomBot(),
+  generateRandomBot(),
 ];
 
 export const BotList = () => {
