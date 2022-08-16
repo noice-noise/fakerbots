@@ -29,13 +29,16 @@ Bot simulator app to implement React-TypeScript fundamentals
 
 - [x] Framer Motion
 
+### Testing
+
+- [ ] Cypress
+
 ### Project File Structure
 
 - Bulletproof React template reference
 
 ### Maybe
 
-- Unit & e2e Testing (cypress, jest, or selenium)
 - Storybook
 - Auto-generated CHANGELOG based on commits (git convention)
 - Auto-generated code documentation
