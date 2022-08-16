@@ -9,7 +9,6 @@ export const Dashboard = () => {
       as={Center}
       mt={20}
       mb={32}
-      // minH={'90vh'}
       w={'100%'}
       inset={0}
       justify='start'

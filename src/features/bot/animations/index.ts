@@ -3,11 +3,9 @@ import { Variants } from 'framer-motion';
 export const parentVariants: Variants = {
   hidden: {
     y: '100vh',
-    // opacity: 0,
   },
   visible: {
     y: 0,
-    // opacity: 1,
     transition: {
       type: 'spring',
       mass: 0.4,
