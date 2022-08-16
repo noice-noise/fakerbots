@@ -76,6 +76,7 @@ export const buttonContainerVariant: Variants = {
       ease: 'easeInOut',
       duration: 0.1,
       staggerChildren: 0.125,
+      when: 'beforeChildren',
     },
   },
   exit: {
