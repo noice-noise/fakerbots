@@ -14,18 +14,18 @@ import {
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { useEffect, useReducer, useState } from 'react';
+import { TbArrowsRandom, TbAtom2 } from 'react-icons/tb';
 import {
   generateRandomInitialState,
   generateRandomStates,
 } from '../../../utils/data-generators';
 import {
-  buttonContainerVariant,
-  buttonVariant,
+  buttonGroupVariants,
+  buttonVariants,
   childrenVariants,
 } from '../animations';
 import { Bot } from '../types';
 import { BotListAction } from './BotList';
-import { TbArrowsRandom, TbAtom2 } from 'react-icons/tb';
 
 enum BotAction {
   UPDATE_STATE,
@@ -151,18 +151,18 @@ export const BotCard = ({ bot, onUpdate, action }: BotCardProps) => {
   return (
     <Box as={motion.div} variants={childrenVariants}>
       <Flex
-        as={motion.div}
-        variants={childrenVariants}
-        initial='hidden'
-        animate='visible'
-        whileHover='hover'
-        direction='column'
-        exit='exit'
         w={80}
         p={4}
+        direction='column'
         borderWidth={'1px'}
         rounded={'lg'}
         gap={2}
+        as={motion.div}
+        variants={childrenVariants}
+        initial='initial'
+        animate='animate'
+        whileHover='hover'
+        exit='exit'
       >
         <Flex align='center'>
           <Heading size='sm' fontWeight='bolclsd'>
@@ -183,12 +183,12 @@ export const BotCard = ({ bot, onUpdate, action }: BotCardProps) => {
         <Box>
           <Progress
             colorScheme='green'
-            hasStripe
-            isAnimated
             value={Number(state.currentState.task.currentValue)}
             max={state.currentState.task.targetValue}
             rounded='lg'
             size='sm'
+            isAnimated
+            hasStripe
           />
           <Flex justify='space-between' mt={1}>
             <Text fontSize='xs'>{state.currentState.task.currentValue}</Text>
@@ -197,26 +197,26 @@ export const BotCard = ({ bot, onUpdate, action }: BotCardProps) => {
         </Box>
 
         <ButtonGroup
-          as={motion.div}
-          variants={buttonContainerVariant}
           justifyContent='flex-end'
+          as={motion.div}
+          variants={buttonGroupVariants}
         >
           <Button
             variant='outline'
-            as={motion.button}
-            variants={buttonVariant}
             leftIcon={<TbAtom2 />}
-            size='sm'
             onClick={() => dispatch({ type: BotAction.NEXT_STATE })}
+            size='sm'
+            as={motion.button}
+            variants={buttonVariants}
           >
-            Override
+            Override1
           </Button>
           <Button
             variant='outline'
-            as={motion.button}
-            variants={buttonVariant}
-            onClick={() => dispatch({ type: BotAction.RESET_STATE })}
             leftIcon={<TbArrowsRandom />}
+            onClick={() => dispatch({ type: BotAction.RESET_STATE })}
+            as={motion.button}
+            variants={buttonVariants}
             size='sm'
           >
             Reset

@@ -1,10 +1,10 @@
 import { Variants } from 'framer-motion';
 
 export const parentVariants: Variants = {
-  hidden: {
+  initial: {
     y: '100vh',
   },
-  visible: {
+  animate: {
     y: 0,
     transition: {
       type: 'spring',
@@ -23,7 +23,7 @@ export const parentVariants: Variants = {
 };
 
 export const childrenVariants: Variants = {
-  hidden: {
+  initial: {
     y: 0,
     opacity: 0,
     transition: {
@@ -31,7 +31,7 @@ export const childrenVariants: Variants = {
       duration: 0.125,
     },
   },
-  visible: {
+  animate: {
     y: 0,
     opacity: 1,
     transition: {
@@ -54,10 +54,9 @@ export const childrenVariants: Variants = {
   tap: { scale: 0.9 },
 };
 
-export const buttonContainerVariant: Variants = {
-  // To allow group animation, `visible` prop here is to align with the parentVariants' animation state
-  // not really the "visible" state of this specific variant.
-  visible: {
+export const buttonGroupVariants: Variants = {
+  // To allow group animation, `animate` is the prop here is the `default` variant to align with the parentVariants' animation state not really the "animate" state of this specific variant.
+  animate: {
     opacity: 0,
     display: 'hidden',
     transition: {
@@ -87,14 +86,14 @@ export const buttonContainerVariant: Variants = {
   },
 };
 
-export const buttonVariant: Variants = {
-  hidden: {
+export const buttonVariants: Variants = {
+  initial: {
     y: 1,
     transition: {
       ease: 'backInOut',
     },
   },
-  visible: {
+  animate: {
     y: 10,
     transition: {
       ease: 'backInOut',

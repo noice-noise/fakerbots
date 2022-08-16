@@ -1,11 +1,4 @@
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  Flex,
-  IconButton,
-  Tooltip,
-} from '@chakra-ui/react';
+import { Box, ButtonGroup, Flex, IconButton, Tooltip } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { useReducer, useState } from 'react';
 import { TbAtom2, TbRobot, TbRotateClockwise2 } from 'react-icons/tb';
@@ -97,16 +90,16 @@ export const BotList = () => {
       mx='auto'
     >
       <Flex
-        as={motion.div}
-        variants={parentVariants}
-        initial='hidden'
-        animate='visible'
-        exit='exit'
         gap={4}
         flexWrap='wrap'
         maxW='90vw'
         justify='center'
         align='center'
+        as={motion.div}
+        variants={parentVariants}
+        initial='initial'
+        animate='animate'
+        exit='exit'
       >
         {bots.map((bot) => (
           <BotCard
