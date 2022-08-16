@@ -209,7 +209,7 @@ export const BotCard = ({ bot, onUpdate, action }: BotCardProps) => {
             as={motion.button}
             variants={buttonVariants}
           >
-            Override1
+            Override
           </Button>
           <Button
             variant='outline'
