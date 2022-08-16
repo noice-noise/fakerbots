@@ -1,8 +1,6 @@
 # FakerBots
 
-🤖 Bot master simulator
-
-Bot simulator app to implement React-TypeScript fundamentals
+🤖 Bot simulator app to implement React-TypeScript fundamentals
 
 ## Concepts
 
@@ -12,14 +10,12 @@ Bot simulator app to implement React-TypeScript fundamentals
 - [x] useContext
 - [x] useEffect
 - [x] useReducer
-- [ ] ...
 
 ### TypeScript
 
 - [x] types
 - [x] enums
 - [x] React types
-- [ ] ...
 
 ### UI Framework
 
